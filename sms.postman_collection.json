@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "7db602e5-ee52-4ba2-8ea4-6763bfc78d80",
+		"name": "sms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sending-verification-algorithm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phone\": \"+523334958746\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{sva}}",
+					"host": [
+						"{{host}}{{sva}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "90987e8f-6a70-4337-bed3-821c05730aac",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "278a3620-1479-40ee-adf8-2ef21b1940f1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "691f052f-1e46-4c6e-b4be-591047563ad4",
+			"key": "host",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"id": "3a71c793-329d-4a4d-b2c8-edc00b731a4b",
+			"key": "sva",
+			"value": "/sms/sending-verification-algorithm/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
