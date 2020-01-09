@@ -4,6 +4,8 @@ import re
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
+from apps.verification.models import VerificationCode
+
 PHONE_REGEX = r'^\+?[0-9- ]{10,}'
 
 
@@ -28,3 +30,8 @@ class PhoneSerializer(serializers.Serializer):
         if not re.match(PHONE_REGEX, phone):
             raise ValidationError(f'"{phone}" is not a valid phone')
         return phone
+
+
+class VerificationCodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VerificationCode
