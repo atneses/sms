@@ -1,4 +1,5 @@
 # Sending Verification Algorithm
+You can find a little diagram in the root directory called `Diagram.pdf`
 
 ### Requirements
 * Python 3.6
