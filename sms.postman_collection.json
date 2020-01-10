@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "7db602e5-ee52-4ba2-8ea4-6763bfc78d80",
+		"_postman_id": "edfdbf90-6bf4-4071-a592-02363c392686",
 		"name": "sms",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "sending-verification-algorithm",
+			"name": "get-verification-code",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -27,9 +27,56 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}{{sva}}",
+					"raw": "{{host}}{{get-verification-code }}",
 					"host": [
-						"{{host}}{{sva}}"
+						"{{host}}{{get-verification-code }}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify-code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}{{verify-code}}5916/",
+					"host": [
+						"{{host}}{{verify-code}}5916"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resend-code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phone\": \"+523334958746\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}{{resend-code}}",
+					"host": [
+						"{{host}}{{resend-code}}"
 					]
 				}
 			},
@@ -40,7 +87,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "90987e8f-6a70-4337-bed3-821c05730aac",
+				"id": "bcf53a49-bab3-408f-be2b-9a0bca2180fc",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -50,7 +97,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "278a3620-1479-40ee-adf8-2ef21b1940f1",
+				"id": "851e30e2-fc8b-4adf-97cf-ad4bee34641d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -60,15 +107,27 @@
 	],
 	"variable": [
 		{
-			"id": "691f052f-1e46-4c6e-b4be-591047563ad4",
+			"id": "b6fcf084-d6ce-44ef-8a08-ea88977d40ac",
 			"key": "host",
-			"value": "http://localhost:8000",
+			"value": "localhost:8000",
 			"type": "string"
 		},
 		{
-			"id": "3a71c793-329d-4a4d-b2c8-edc00b731a4b",
-			"key": "sva",
-			"value": "/sms/sending-verification-algorithm/",
+			"id": "199e696a-6583-4566-91f7-ad7d1c8dd2b0",
+			"key": "verify-code",
+			"value": "/sms/verify-code/",
+			"type": "string"
+		},
+		{
+			"id": "fc6d6893-7293-44b6-86c3-61507f67da9d",
+			"key": "get-verification-code ",
+			"value": "/sms/get-verification-code/",
+			"type": "string"
+		},
+		{
+			"id": "30b7df9f-e8ec-41c2-b637-6731827e0c09",
+			"key": "resend-code",
+			"value": "/sms/resend-code/",
 			"type": "string"
 		}
 	],

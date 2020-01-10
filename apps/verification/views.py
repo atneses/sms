@@ -63,3 +63,28 @@ class VerifyCode(APIView):
             return Response('Hi, you have been verified!', status=status.HTTP_200_OK)
         else:
             return Response(self.ERROR_INVALID_CODE, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ResendVerificationCode(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        phone = PhoneSerializer(data=request.data)
+        if not phone.is_valid():
+            raise ValidationError(self.error_message(request.data['phone']))
+
+        code = VerificationCode.objects\
+            .filter(for_phone=request.data['phone'])\
+            .filter(valid=True)\
+            .first()
+        if code:
+            return Response(self.verification_message(code.code), status=status.HTTP_200_OK)
+        return Response('There is not a valid verification code')
+
+    def error_message(self, phone):
+        message = {'message': f'"{phone}" is not a valid phone'}
+        return message
+
+    def verification_message(self, code):
+        message = f'Hi! Your verification code for Rever is <{code}>'
+        return message

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.urls import path
 
-from apps.verification.views import GetVerificationCode, VerifyCode
+from apps.verification.views import GetVerificationCode, VerifyCode, ResendVerificationCode
 
 urlpatterns = [
     path(
@@ -9,5 +9,6 @@ urlpatterns = [
         GetVerificationCode.as_view(),
         name='get-verification-code'
     ),
-    path('verify-code/<str:code>/', VerifyCode.as_view(), name='verify-code')
+    path('verify-code/<str:code>/', VerifyCode.as_view(), name='verify-code'),
+    path('resend-code/', ResendVerificationCode.as_view(), name='resend-code')
 ]
